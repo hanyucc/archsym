@@ -359,12 +359,22 @@ body {
   padding: 1.75rem;
 }
 
+.feature-panel > p:not(.placeholder-label) {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.feature-panel .columns p:not(.placeholder-label) {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .feature-panel + .feature-panel {
   margin-top: 1.25rem;
 }
 
 .feature-panel-compact {
-  margin-top: 1rem;
+  margin-top: 2.75rem;
 }
 
 .media-frame {
@@ -402,7 +412,7 @@ body {
 }
 
 .method-figure-block {
-  margin-top: 1.5rem;
+  margin-top: 1.9rem;
 }
 
 .method-figure-image {
@@ -413,13 +423,19 @@ body {
   background: transparent;
 }
 
+.stats-figure-block {
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .curation-video {
   background: #ffffff;
   box-shadow: 0 1rem 2.2rem rgba(23, 32, 42, 0.06);
 }
 
 .curation-video-block {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.6rem;
 }
 
 .comparison-grid {

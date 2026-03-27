@@ -30,7 +30,7 @@
     <div class="navbar-end">
       <a class="navbar-item" href="#viewer">Viewer</a>
       <a class="navbar-item" href="#curation">Dataset Curation</a>
-      <a class="navbar-item" href="#detector">Detector</a>
+      <a class="navbar-item" href="#detector">Symmetry Detector</a>
       <a class="navbar-item" href="#BibTeX">BibTeX</a>
     </div>
   </div>
@@ -132,8 +132,7 @@
         <h2 class="title is-3">Interactive Symmetry Viewer</h2>
         <div class="content has-text-justified">
           <p>
-            This is the best place to insert your shared point cloud viewer with per-scene tabs and method toggles.
-            It should replace the Nerfies carousel, not live below it.
+            We visualize predicted reflectional symmetry planes from three different methods on a shared point cloud. The input image is shown on the bottom right. See <a href="#symmetry-detection">below</a> for more qualitative comparisons.
           </p>
         </div>
       </div>
@@ -161,14 +160,7 @@
           </div>
         </div>
 
-        <div class="viewer-placeholder" id="viewer-overlay">
-          <p class="placeholder-label">Canvas Mount</p>
-          <h3 class="title is-4">Loading viewer</h3>
-          <p>
-            Export data from the tuner into <code>static/data</code>, then this viewer will load
-            <code>scenes.json</code>, the point cloud, and the selected plane variant automatically.
-          </p>
-        </div>
+        <div class="viewer-placeholder is-hidden" id="viewer-overlay"></div>
       </div>
 
       <div class="viewer-controls">
@@ -220,7 +212,7 @@
 
     <div class="stacked-panels">
       <article class="feature-panel">
-        <p class="placeholder-label">Annotation Quality</p>
+        <p class="placeholder-label">Symmetry Annotation</p>
         <h3 class="title is-4">Why image-aware extraction helps</h3>
         <p>
           As a symmetry annotation baseline, we run <span class="smallcaps"><a href="https://symmetry-langevin.github.io/">Langevin</a></span>, a purely geometry-based method, on the dense COLMAP point clouds to extract reflectional symmetries. We obserse that it is highly sensitive to incomplete point clouds (e.g. Frauenkirche, Isa Khan's Tomb) and detects architecturally implausible planes (e.g., horizontal plane on the Arc de Triomphe, misaligned plane on the Pisa Cathedral). In contrast, our method extracts semantically-correct symmetries.
@@ -230,21 +222,20 @@
         </div>
       </article>
 
-      <article class="feature-panel">
-        <div class="columns is-vcentered">
-          <div class="column is-7-desktop">
-            <div class="media-frame media-frame-medium">
-              <div class="media-frame-copy">
-                <p class="placeholder-label">Dataset Statistics</p>
-                <p>Use this wide slot for scene counts, image counts, and symmetry distributions.</p>
+        <article class="feature-panel">
+          <div class="columns is-vcentered">
+            <div class="column is-6-desktop">
+              <div class="method-figure-block stats-figure-block">
+                <img class="method-figure-image" src="./static/images/stats.png" alt="ArchSym dataset statistics">
               </div>
-            </div>
-          </div>
-          <div class="column is-5-desktop">
-            <p class="placeholder-label">Benchmark Summary</p>
-            <h3 class="title is-4">Coverage and difficulty</h3>
+              </div>
+              <div class="column is-6-desktop">
+                <p class="placeholder-label">Symmetry Annotation</p>
+            <h3 class="title is-4">Dataset Statistics</h3>
             <p>
-              Summarize the range of scenes, architectural styles, occlusions, and symmetry counts represented in ArchSym.
+              The <span class="caption-accent">ArchSym</span> dataset consists of 93 landmark scenes and a total of 34,177 images.
+              Most scenes contain one or two symmetries, while a few contain four (e.g., clock towers) or eight (e.g., octagonal buildings). 
+              The images contribute a wide range of challenges like occlusions, partial views, and varying camera parameters and illumination. 
             </p>
           </div>
         </div>
@@ -273,6 +264,17 @@
     <div class="method-figure-block">
       <img class="method-figure-image" src="./static/images/arch-method.png" alt="Overview of the ArchSym single-view symmetry detector">
     </div>
+
+    <article class="feature-panel feature-panel-compact" id="symmetry-detection">
+      <p class="placeholder-label">Symmetry Detection</p>
+      <h3 class="title is-4">Qualitative Comparisons</h3>
+      <p>
+        We compare our method with a recent single-view symmetry detector, <span class='smallcaps'><a href="https://ryanxli.github.io/reflect3d/">Reflect3D</a></span>, finetuned on our dataset and a simple baseline, <span class='smallcaps'>Direct</span>, where symmetry plane parameters are directly regressed from frozen VGGT features. The two methods often struggle with partially visible symmetries and predicts misaligned planes; our signed-distance-based parameterization allows our method to consistently predict planes that are well-aligned with the scene geometry.
+      </p>
+      <div class="method-figure-block">
+        <img class="method-figure-image" src="./static/images/refl.png" alt="Reflection symmetry prediction examples">
+      </div>
+    </article>
   </div>
 </section>
 
