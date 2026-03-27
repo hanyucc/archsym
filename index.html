@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Project page skeleton for ArchSym-style results, comparisons, and interactive 3D symmetry visualization.">
+  <meta name="keywords" content="ArchSym, symmetry, architecture, 3D, project page">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ArchSym Website Skeleton</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script type="module" src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item nav-home" href="#top">ArchSym</a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item" href="#viewer">Viewer</a>
+      <a class="navbar-item" href="#curation">Dataset Curation</a>
+      <a class="navbar-item" href="#detector">Detector</a>
+      <a class="navbar-item" href="#BibTeX">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span class="title-accent">ArchSym</span>: Detecting 3D-Grounded Architectural Symmetries in the Wild</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Hanyu Chen<sup>1</sup>,</span>
+            <span class="author-block">Ruojin Cai<sup>2</sup>,</span>
+            <span class="author-block">Steve Marschner<sup>1</sup>,</span>
+            <span class="author-block">Noah Snavely<sup>1</sup></span>
+          </div>
+          <div class="is-size-5 publication-authors publication-affiliations">
+            <span class="author-block"><sup>1</sup>Cornell University</span>
+            <span class="author-block"><sup>2</sup>Kempner Institute, Harvard University</span>
+          </div>
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="#"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span>Data</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#BibTeX"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span>BibTeX</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Replaces the Nerfies teaser video. -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="teaser-media-frame">
+        <img class="teaser-image" src="./static/images/teaser.png" alt="ArchSym teaser figure">
+      </div>
+      <h2 class="subtitle has-text-centered teaser-caption">
+        We introduce a single-view reflectional symmetry detector, trained on <span class="caption-accent">ArchSym</span>, a newly curated dataset of in-the-wild architectural symmetries.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section section-abstract" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Symmetry detection is a fundamental problem in computer vision, and symmetries serve as powerful priors for downstream tasks.
+            However, existing learning-based methods for detecting 3D symmetries from single images have been almost exclusively trained
+            and evaluated on object-centric or synthetic datasets, and therefore fail to generalize to real-world scenes. Furthermore,
+            because monocular inputs are inherently scale ambiguous, localizing a 3D symmetry plane is ill-posed, and many prior methods
+            only predict plane orientation.
+            We address these limitations by introducing the first framework for detecting <span class="abstract-accent">3D-grounded reflectional symmetries</span>
+            from single, in-the-wild RGB images, with a focus on architectural landmarks. Our approach has two key components:
+            (1) a scalable annotation pipeline that automatically curates ArchSym, a large-scale dataset
+            of architectural symmetries, from SfM reconstructions via cross-view image matching; and
+            (2) a single-view symmetry detector that localizes symmetries in 3D by parameterizing them as signed distance maps defined
+            relative to predicted scene geometry. We validate the annotation pipeline against geometry-based alternatives and show that
+            the detector significantly outperforms state-of-the-art baselines on the new benchmark.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Replaces the Nerfies carousel with a single interactive viewer. -->
+<section class="section section-viewer" id="viewer">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Interactive Symmetry Viewer</h2>
+        <div class="content has-text-justified">
+          <p>
+            This is the best place to insert your shared point cloud viewer with per-scene tabs and method toggles.
+            It should replace the Nerfies carousel, not live below it.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="viewer-card">
+      <div class="viewer-toolbar">
+        <div class="scene-tabs" id="scene-tabs" role="tablist" aria-label="Scene selector">
+        </div>
+        <div class="viewer-stats">
+          <span class="stat-chip">Method: <strong id="active-method-label">None</strong></span>
+          <span class="stat-chip">Scene: <strong id="active-scene-label">None</strong></span>
+        </div>
+      </div>
+
+      <div id="viewer-container" class="viewer-stage">
+        <div class="viewer-image-card">
+          <div class="viewer-image-stage" id="input-image-stage">
+            <img id="input-image" class="input-image is-hidden" alt="Input view for the selected scene">
+            <div class="input-image-overlay" id="input-image-overlay">
+              <p class="placeholder-label">Input Image</p>
+              <h3 class="title is-5">No image</h3>
+              <p>Add <code>input.jpg</code> or set an <code>image</code> path in <code>scenes.json</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="viewer-placeholder" id="viewer-overlay">
+          <p class="placeholder-label">Canvas Mount</p>
+          <h3 class="title is-4">Loading viewer</h3>
+          <p>
+            Export data from the tuner into <code>static/data</code>, then this viewer will load
+            <code>scenes.json</code>, the point cloud, and the selected plane variant automatically.
+          </p>
+        </div>
+      </div>
+
+      <div class="viewer-controls">
+        <div class="control-group">
+          <span class="control-label">Visible Planes</span>
+          <div class="method-toggle" id="method-toggle" role="group" aria-label="Plane set selector">
+            <button class="method-button" type="button" data-method="ours">Ours</button>
+            <button class="method-button" type="button" data-method="direct">Direct</button>
+            <button class="method-button" type="button" data-method="reflect3d">Reflect3D</button>
+          </div>
+        </div>
+        <label class="control-group slider-group" for="point-size">
+          <span class="control-label">Point Size</span>
+          <input id="point-size" class="viewer-slider" type="range" min="0" max="100" value="40">
+          <span class="slider-value" id="point-size-value">0.04</span>
+        </label>
+        <label class="control-group slider-group" for="plane-opacity">
+          <span class="control-label">Plane Opacity</span>
+          <input id="plane-opacity" class="viewer-slider" type="range" min="0" max="100" value="35">
+          <span class="slider-value" id="plane-opacity-value">0.35</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="curation">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset Curation</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose an image-matching-based approach to annotate reflectional symmetries. 
+            We first sample image pairs from an SfM reconstruction of each scene. 
+            For each pair, we horizontally flip one image, find dense matches with the other image via <a href="https://europe.naverlabs.com/blog/mast3r-matching-and-stereo-3d-reconstruction/">MASt3R</a>, 
+            unproject matched pixels to 3D points using depth maps, and fit a plane to the resulting point pairs. 
+            The final symmetry planes annotations are then determined by clustering candidate planes with DBSCAN.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-figure-block curation-video-block">
+      <video class="method-figure-image curation-video" controls playsinline preload="metadata">
+        <source src="./static/videos/archsym_pipeline.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="stacked-panels">
+      <article class="feature-panel">
+        <p class="placeholder-label">Annotation Quality</p>
+        <h3 class="title is-4">Why image-aware extraction helps</h3>
+        <p>
+          As a symmetry annotation baseline, we run <span class="smallcaps"><a href="https://symmetry-langevin.github.io/">Langevin</a></span>, a purely geometry-based method, on the dense COLMAP point clouds to extract reflectional symmetries. We obserse that it is highly sensitive to incomplete point clouds (e.g. Frauenkirche, Isa Khan's Tomb) and detects architecturally implausible planes (e.g., horizontal plane on the Arc de Triomphe, misaligned plane on the Pisa Cathedral). In contrast, our method extracts semantically-correct symmetries.
+        </p>
+        <div class="method-figure-block">
+          <img class="method-figure-image" src="./static/images/langevin.png" alt="Comparison of geometry-only versus image-aware symmetry extraction">
+        </div>
+      </article>
+
+      <article class="feature-panel">
+        <div class="columns is-vcentered">
+          <div class="column is-7-desktop">
+            <div class="media-frame media-frame-medium">
+              <div class="media-frame-copy">
+                <p class="placeholder-label">Dataset Statistics</p>
+                <p>Use this wide slot for scene counts, image counts, and symmetry distributions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="column is-5-desktop">
+            <p class="placeholder-label">Benchmark Summary</p>
+            <h3 class="title is-4">Coverage and difficulty</h3>
+            <p>
+              Summarize the range of scenes, architectural styles, occlusions, and symmetry counts represented in ArchSym.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="detector">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Single-View Symmetry Detector</h2>
+        <div class="content has-text-justified">
+          <p>
+            In our single-view symmetry detector, a frozen VGGT backbone first extracts features from a single input image. 
+            A transformer decoder extracts symmetry-aware instance queries to
+            identify candidate planes, and a conditioned DPT-style prediction head produces signed distance maps relative
+            to the predicted scene geometry. Final 3D-grounded symmetry planes are then recovered by fitting plane
+            parameters to the predicted signed distances and 3D points.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-figure-block">
+      <img class="method-figure-image" src="./static/images/arch-method.png" alt="Overview of the ArchSym single-view symmetry detector">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{replace_me,
+  title   = {ArchSym: Detecting 3D-Grounded Architectural Symmetries in the Wild},
+  author  = {Replace with final citation},
+  journal = {Replace with venue},
+  year    = {Replace with year}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This scaffold is adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies website source</a>.
+          </p>
+          <p>
+            If you keep derived parts of the original template, preserve the attribution and review the original
+            Creative Commons Attribution-ShareAlike 4.0 license before publishing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

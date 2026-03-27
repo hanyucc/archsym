@@ -1,0 +1,64 @@
+{
+  "scenes": {
+    "arc-de-triomphe": {
+      "display_name": "Arc de Triomphe",
+      "pointcloud": "static/data/scenes/arc-de-triomphe/pointcloud.ply",
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "plane_dir": "static/data/scenes/arc-de-triomphe/planes"
+    },
+    "chrysler-building": {
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "display_name": "Chrysler Building",
+      "pointcloud": "static/data/scenes/chrysler-building/pointcloud.ply",
+      "plane_dir": "static/data/scenes/chrysler-building/planes"
+    },
+    "cathedral-of-saint-paul": {
+      "display_name": "Cathedral of Saint Paul",
+      "pointcloud": "static/data/scenes/cathedral-of-saint-paul/pointcloud.ply",
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "plane_dir": "static/data/scenes/cathedral-of-saint-paul/planes"
+    },
+    "bath-abbey": {
+      "display_name": "Bath Abbey",
+      "pointcloud": "static/data/scenes/bath-abbey/pointcloud.ply",
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "plane_dir": "static/data/scenes/bath-abbey/planes"
+    },
+    "bell-tower-of-xi-an": {
+      "display_name": "Bell Tower of Xi'an",
+      "pointcloud": "static/data/scenes/bell-tower-of-xi-an/pointcloud.ply",
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "plane_dir": "static/data/scenes/bell-tower-of-xi-an/planes"
+    },
+    "town-hall-tower-in-krak-w": {
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "display_name": "Town Hall Tower in Kraków",
+      "pointcloud": "static/data/scenes/town-hall-tower-in-krak-w/pointcloud.ply",
+      "plane_dir": "static/data/scenes/town-hall-tower-in-krak-w/planes"
+    }
+  }
+}
