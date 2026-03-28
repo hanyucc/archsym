@@ -3,16 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Project page skeleton for ArchSym-style results, comparisons, and interactive 3D symmetry visualization.">
+        content="Project page for ArchSym: Detecting 3D-Grounded Architectural Symmetries in the Wild, with an interactive viewer, dataset curation pipeline, and qualitative comparisons.">
   <meta name="keywords" content="ArchSym, symmetry, architecture, 3D, project page">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ArchSym Website Skeleton</title>
+  <title>ArchSym</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false }
+        ]
+      });
+    });
+  </script>
   <script type="module" src="./static/js/index.js"></script>
 </head>
 <body>
@@ -155,7 +167,7 @@
             <div class="input-image-overlay" id="input-image-overlay">
               <p class="placeholder-label">Input Image</p>
               <h3 class="title is-5">No image</h3>
-              <p>Add <code>input.jpg</code> or set an <code>image</code> path in <code>scenes.json</code>.</p>
+              <p>Add <code>image.png</code> to the scene folder or set an <code>image</code> path in <code>scenes.json</code>.</p>
             </div>
           </div>
         </div>
@@ -205,7 +217,7 @@
     </div>
 
     <div class="method-figure-block curation-video-block">
-      <video class="method-figure-image curation-video" controls playsinline preload="metadata">
+      <video class="method-figure-image curation-video" controls playsinline preload="metadata" poster="./static/images/archsym_pipeline_poster.png">
         <source src="./static/videos/archsym_pipeline.mp4" type="video/mp4">
       </video>
     </div>
@@ -215,7 +227,7 @@
         <p class="placeholder-label">Symmetry Annotation</p>
         <h3 class="title is-4">Why image-aware extraction helps</h3>
         <p>
-          As a symmetry annotation baseline, we run <span class="smallcaps"><a href="https://symmetry-langevin.github.io/">Langevin</a></span>, a purely geometry-based method, on the dense COLMAP point clouds to extract reflectional symmetries. We obserse that it is highly sensitive to incomplete point clouds (e.g. Frauenkirche, Isa Khan's Tomb) and detects architecturally implausible planes (e.g., horizontal plane on the Arc de Triomphe, misaligned plane on the Pisa Cathedral). In contrast, our method extracts semantically-correct symmetries.
+          As a symmetry annotation baseline, we run <span class="smallcaps"><a href="https://symmetry-langevin.github.io/">Langevin</a></span>, a purely geometry-based method, on the dense COLMAP point clouds to extract reflectional symmetries. We observe that it is highly sensitive to incomplete point clouds (e.g. Frauenkirche, Isa Khan's Tomb) and detects architecturally implausible planes (e.g., horizontal plane on the Arc de Triomphe, misaligned plane on the Pisa Cathedral). In contrast, our method extracts semantically-correct symmetries.
         </p>
         <div class="method-figure-block">
           <img class="method-figure-image" src="./static/images/langevin.png" alt="Comparison of geometry-only versus image-aware symmetry extraction">
@@ -251,7 +263,7 @@
         <h2 class="title is-3">Single-View Symmetry Detector</h2>
         <div class="content has-text-justified">
           <p>
-            In our single-view symmetry detector, a frozen VGGT backbone first extracts features from a single input image. 
+            In our single-view symmetry detector, a frozen <a href="https://vgg-t.github.io/">VGGT</a> backbone first extracts features from a single input image. 
             A transformer decoder extracts symmetry-aware instance queries to
             identify candidate planes, and a conditioned DPT-style prediction head produces signed distance maps relative
             to the predicted scene geometry. Final 3D-grounded symmetry planes are then recovered by fitting plane
@@ -265,14 +277,73 @@
       <img class="method-figure-image" src="./static/images/arch-method.png" alt="Overview of the ArchSym single-view symmetry detector">
     </div>
 
+    <article class="feature-panel detector-callout">
+      <p class="placeholder-label">Symmetry Detection</p>
+      <h3 class="title is-4">Why signed-distance maps</h3>
+      <p>
+        Directly regressing full plane parameters, normals $\mathbf{\vec{n}}$ and offsets $d$, from a single image is ill-defined due to the inherent scale ambiguity in monocular 3D reconstruction. Instead, our model predicts signed-distance maps defined relative to its own point map predictions. This provides a natural coordinate frame for grounding symmetry planes and a scale-consistent supervision signal. As shown below, even when compared to regressing plane parameters in this fixed coordinate frame, our dense signed-distance formulation still allows more accurate alignment with the scene geometry.
+      </p>
+    </article>
+
     <article class="feature-panel feature-panel-compact" id="symmetry-detection">
       <p class="placeholder-label">Symmetry Detection</p>
       <h3 class="title is-4">Qualitative Comparisons</h3>
       <p>
-        We compare our method with a recent single-view symmetry detector, <span class='smallcaps'><a href="https://ryanxli.github.io/reflect3d/">Reflect3D</a></span>, finetuned on our dataset and a simple baseline, <span class='smallcaps'>Direct</span>, where symmetry plane parameters are directly regressed from frozen VGGT features. The two methods often struggle with partially visible symmetries and predicts misaligned planes; our signed-distance-based parameterization allows our method to consistently predict planes that are well-aligned with the scene geometry.
+        We compare our method with a recent single-view symmetry detector, <span class='smallcaps'><a href="https://ryanxli.github.io/reflect3d/">Reflect3D</a></span>, finetuned on our dataset and a simple baseline, <span class='smallcaps'>Direct</span>, where symmetry plane parameters are directly regressed from frozen VGGT features. The two methods often struggle with partially visible symmetries and predict misaligned planes; our signed-distance-based parameterization allows our method to consistently predict planes that are well-aligned with the scene geometry.
       </p>
       <div class="method-figure-block">
         <img class="method-figure-image" src="./static/images/refl.png" alt="Reflection symmetry prediction examples">
+      </div>
+      <p class="figure-note">
+        <span class="figure-note-label">Note:</span> <span class='smallcaps'>Reflect3D</span> predicts plane normals but not offsets; for visualization, we use a point on the nearest ground truth plane as an anchor.
+      </p>
+    </article>
+
+    <article class="feature-panel feature-panel-compact">
+      <p class="placeholder-label">Symmetry Detection</p>
+      <h3 class="title is-4">Quantitative Evaluation</h3>
+      <p>
+        Quantitative results are averaged over 19 held-out test scenes. Our method outperforms both baselines normal-only prediction ($\mathrm{Geo}$, $\mathrm{F}@x^\circ$) and full-plane localization ($\mathcal E_{\text{dense}}$). We refer to the paper for details on evaluation metrics.
+      </p>
+      <div class="table-container results-table-wrap">
+        <table class="table is-fullwidth results-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>$\mathrm{Geo} \downarrow$</th>
+              <th>$\mathrm{F}@1^\circ \uparrow$</th>
+              <th>$\mathrm{F}@5^\circ \uparrow$</th>
+              <th>$\mathrm{F}@15^\circ \uparrow$</th>
+              <th>$\mathcal E_{\text{dense}} \downarrow$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class='smallcaps'>Reflect3D</span></td>
+              <td>10.46</td>
+              <td>0.07</td>
+              <td>0.34</td>
+              <td>0.55</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><span class='smallcaps'>Direct</span></td>
+              <td>5.06</td>
+              <td>0.16</td>
+              <td>0.64</td>
+              <td>0.81</td>
+              <td>0.18</td>
+            </tr>
+            <tr class="results-table-ours">
+              <td><span class='smallcaps'>Ours</span></td>
+              <td>3.71</td>
+              <td>0.25</td>
+              <td>0.70</td>
+              <td>0.84</td>
+              <td>0.13</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </article>
   </div>
@@ -290,17 +361,27 @@
   </div>
 </section>
 
+<section class="section" id="acknowledgments">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgments</h2>
+    <div class="content has-text-justified">
+      <p>
+        This work was funded in part by the National Science Foundation (IIS-2212084) and by the Institute of Information &amp; Communications Technology Planning &amp; Evaluation (IITP) grant funded by the Korean Government (MSIT) (No. RS-2024-00457882, National AI Research Lab Project).
+      </p>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
           <p>
-            This scaffold is adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies website source</a>.
+            Project page for <em>ArchSym: Detecting 3D-Grounded Architectural Symmetries in the Wild</em>.
           </p>
           <p>
-            If you keep derived parts of the original template, preserve the attribution and review the original
-            Creative Commons Attribution-ShareAlike 4.0 license before publishing.
+            This website is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies project page template</a>. Please refer to the original repository for attribution and licensing details.
           </p>
         </div>
       </div>

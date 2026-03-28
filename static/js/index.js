@@ -538,7 +538,7 @@ async function loadScene(sceneName, requestedMethod = null) {
 }
 
 async function loadManifest() {
-  showOverlay("Waiting For Data", "Load exported scenes into static/data/scenes and refresh.");
+  showOverlay("Loading Viewer", "Loading scene data...");
 
   try {
     const response = await fetch("./static/data/scenes.json", { cache: "no-store" });
@@ -556,7 +556,7 @@ async function loadManifest() {
     renderSceneTabs();
     await loadScene(sceneNames[0]);
   } catch (error) {
-    showOverlay("Missing Data", `${error.message} Export from plane-roll-tuner into this site first.`, "error");
+    showOverlay("Missing Data", `${error.message} Make sure static/data/scenes.json and the referenced assets are available.`, "error");
   }
 }
 

@@ -377,6 +377,10 @@ body {
   margin-top: 2.75rem;
 }
 
+.detector-callout {
+  margin-top: 1.6rem;
+}
+
 .media-frame {
   margin-top: 1rem;
   border-radius: 1rem;
@@ -421,6 +425,62 @@ body {
   height: auto;
   border-radius: 1rem;
   background: transparent;
+}
+
+.figure-note {
+  margin-top: 1rem;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: #586471;
+}
+
+.figure-note-label {
+  font-weight: 600;
+}
+
+.results-table-wrap {
+  margin-top: 1.5rem;
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid rgba(23, 32, 42, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #fcfdfd;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.results-table th,
+.results-table td {
+  border-color: rgba(23, 32, 42, 0.08);
+  vertical-align: middle;
+}
+
+.results-table th:first-child,
+.results-table td:first-child {
+  width: 10.5rem;
+}
+
+.results-table thead th {
+  background: #f3f6f4;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+  color: #243341;
+}
+
+.results-table tbody tr:last-child td {
+  border-bottom-width: 0;
+}
+
+.results-table-ours td {
+  background: rgba(125, 158, 133, 0.12);
+  font-weight: 700;
 }
 
 .stats-figure-block {

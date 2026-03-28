@@ -1,31 +1,30 @@
 # ArchSym
 
-This folder is a stripped project-page scaffold derived from the local `nerfies.github.io` repository.
+Project website for the paper **ArchSym: Detecting 3D-Grounded Architectural Symmetries in the Wild**.
 
-## What it keeps
+## Local preview
 
-- The broad Nerfies page rhythm: hero, teaser, main demo block, results-first content, method, BibTeX.
-- Bulma and Font Awesome from the original page.
-- A simple custom stylesheet and script for a blank but usable starting point.
+From this directory, run:
 
-## What it removes
+```bash
+python -m http.server 8000
+```
 
-- Nerfies-specific videos, carousel logic, interpolation widget, and related-links content.
-- Analytics and third-party demo dependencies that are not useful for this paper.
+Then open `http://127.0.0.1:8000`.
 
-## Suggested next step
+## Repository structure
 
-Replace the placeholder viewer in `index.html` with your Three.js scene:
+- `index.html`: main project page
+- `static/css/index.css`: site styling
+- `static/js/index.js`: interactive viewer logic
+- `static/data/scenes`: per-scene point clouds, images, and plane JSON files
+- `static/images`: paper figures and other static media
+- `static/videos`: website videos
 
-- one shared point cloud
-- per-scene tabs
-- per-method plane visibility toggles
-- point-size and plane-opacity controls
+## Deployment
 
-The main files to edit are:
+This repository is structured so it can be served directly from the repository root via GitHub Pages.
 
-- `index.html`
-- `static/css/index.css`
-- `static/js/index.js`
+## Attribution
 
-If you publish a derivative that still substantially borrows from Nerfies, keep the footer attribution and review the original license in `nerfies.github.io/README.md`.
+This website is based on the [Nerfies project page template](https://github.com/nerfies/nerfies.github.io). Please refer to the original repository for attribution and licensing details.
