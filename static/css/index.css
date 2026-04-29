@@ -417,6 +417,7 @@ body {
 
 .method-figure-block {
   margin-top: 1.9rem;
+  margin-bottom: 3rem;
 }
 
 .method-figure-image {
@@ -485,6 +486,12 @@ body {
 
 .stats-figure-block {
   max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.performance-chart-block {
+  max-width: 52rem;
   margin-left: auto;
   margin-right: auto;
 }

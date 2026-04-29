@@ -303,48 +303,12 @@
       <p class="placeholder-label">Symmetry Detection</p>
       <h3 class="title is-4">Quantitative Evaluation</h3>
       <p>
-        Quantitative results are averaged over 19 held-out test scenes. Our method outperforms both baselines normal-only prediction ($\mathrm{Geo}$, $\mathrm{F}@x^\circ$) and full-plane localization ($\mathcal E_{\text{dense}}$). We refer to the paper for details on evaluation metrics.
+        Quantitative results are averaged over 19 held-out test scenes. Our method outperforms both baselines in normal-only prediction ($\mathrm{Geo}$, $\mathrm{F}@x^\circ$) and in full-plane localization ($\mathcal E_{\text{dense}}$). We refer to the paper for details on evaluation metrics.
       </p>
-      <div class="table-container results-table-wrap">
-        <table class="table is-fullwidth results-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th>$\mathrm{Geo} \downarrow$</th>
-              <th>$\mathrm{F}@1^\circ \uparrow$</th>
-              <th>$\mathrm{F}@5^\circ \uparrow$</th>
-              <th>$\mathrm{F}@15^\circ \uparrow$</th>
-              <th>$\mathcal E_{\text{dense}} \downarrow$</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class='smallcaps'>Reflect3D</span></td>
-              <td>10.46</td>
-              <td>0.07</td>
-              <td>0.34</td>
-              <td>0.55</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td><span class='smallcaps'>Direct</span></td>
-              <td>5.06</td>
-              <td>0.16</td>
-              <td>0.64</td>
-              <td>0.81</td>
-              <td>0.18</td>
-            </tr>
-            <tr class="results-table-ours">
-              <td><span class='smallcaps'>Ours</span></td>
-              <td>3.71</td>
-              <td>0.25</td>
-              <td>0.70</td>
-              <td>0.84</td>
-              <td>0.13</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="method-figure-block performance-chart-block">
+        <img class="method-figure-image" src="./static/images/performance_chart.png" alt="Bar chart comparing Reflect3D, Direct, and Ours across F-score and error metrics">
       </div>
+      <p class="figure-note">F-score bars show raw values, while $\mathrm{Geo}$ and $\mathcal E_{\text{dense}}$ are scaled separately for visual comparison.</p>
     </article>
   </div>
 </section>
