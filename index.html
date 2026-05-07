@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
   <script defer>
@@ -55,10 +56,10 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title"><span class="title-accent">ArchSym</span>: Detecting 3D-Grounded Architectural Symmetries in the Wild</h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Hanyu Chen<sup>1</sup>,</span>
-            <span class="author-block">Ruojin Cai<sup>2</sup>,</span>
-            <span class="author-block">Steve Marschner<sup>1</sup>,</span>
-            <span class="author-block">Noah Snavely<sup>1</sup></span>
+            <span class="author-block"><a href="https://hanyuc.com/">Hanyu Chen</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://ruojincai.github.io/">Ruojin Cai</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://www.cs.cornell.edu/~srm/">Steve Marschner</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://www.cs.cornell.edu/~snavely/">Noah Snavely</a><sup>1</sup></span>
           </div>
           <div class="is-size-5 publication-authors publication-affiliations">
             <span class="author-block"><sup>1</sup>Cornell University</span>
@@ -66,26 +67,38 @@
           </div>
           <div class="publication-links">
             <span class="link-block">
-              <a href="https://arxiv.org/abs/2604.22202"
-                 class="external-link button is-normal is-rounded is-dark">
+              <a href="https://hanyuc.com/data/papers/archsym.pdf"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-file-pdf"></i>
+                </span>
                 <span>Paper</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="#"
-                 class="external-link button is-normal is-rounded is-dark">
+              <a href="https://arxiv.org/abs/2604.22202"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/hanyucc/archsym_code"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
                 <span>Code</span>
               </a>
             </span>
             <span class="link-block">
-              <a href="#"
-                 class="external-link button is-normal is-rounded is-dark">
-                <span>Data</span>
-              </a>
-            </span>
-            <span class="link-block">
               <a href="#BibTeX"
-                 class="external-link button is-normal is-rounded is-dark">
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-quote-right"></i>
+                </span>
                 <span>BibTeX</span>
               </a>
             </span>
@@ -206,10 +219,10 @@
         <h2 class="title is-3">Dataset Curation</h2>
         <div class="content has-text-justified">
           <p>
-            We propose an image-matching-based approach to annotate reflectional symmetries. 
-            We first sample image pairs from an SfM reconstruction of each scene. 
-            For each pair, we horizontally flip one image, find dense matches with the other image via <a href="https://europe.naverlabs.com/blog/mast3r-matching-and-stereo-3d-reconstruction/">MASt3R</a>, 
-            unproject matched pixels to 3D points using depth maps, and fit a plane to the resulting point pairs. 
+            We propose an image-matching-based approach to annotate reflectional symmetries.
+            We first sample image pairs from an SfM reconstruction of each scene.
+            For each pair, we horizontally flip one image, find dense matches with the other image via <a href="https://europe.naverlabs.com/blog/mast3r-matching-and-stereo-3d-reconstruction/">MASt3R</a>,
+            unproject matched pixels to 3D points using depth maps, and fit a plane to the resulting point pairs.
             The final symmetry planes annotations are then determined by clustering candidate planes with DBSCAN.
           </p>
         </div>
@@ -246,8 +259,8 @@
             <h3 class="title is-4">Dataset Statistics</h3>
             <p>
               The <span class="caption-accent">ArchSym</span> dataset consists of 93 landmark scenes and a total of 34,177 images.
-              Most scenes contain one or two symmetries, while a few contain four (e.g., clock towers) or eight (e.g., octagonal buildings). 
-              The images contribute a wide range of challenges like occlusions, partial views, and varying camera parameters and illumination. 
+              Most scenes contain one or two symmetries, while a few contain four (e.g., clock towers) or eight (e.g., octagonal buildings).
+              The images contribute a wide range of challenges like occlusions, partial views, and varying camera parameters and illumination.
             </p>
           </div>
         </div>
@@ -263,7 +276,7 @@
         <h2 class="title is-3">Single-View Symmetry Detector</h2>
         <div class="content has-text-justified">
           <p>
-            In our single-view symmetry detector, a frozen <a href="https://vgg-t.github.io/">VGGT</a> backbone first extracts features from a single input image. 
+            In our single-view symmetry detector, a frozen <a href="https://vgg-t.github.io/">VGGT</a> backbone first extracts features from a single input image.
             A transformer decoder extracts symmetry-aware instance queries to
             identify candidate planes, and a conditioned DPT-style prediction head produces signed distance maps relative
             to the predicted scene geometry. Final 3D-grounded symmetry planes are then recovered by fitting plane
@@ -316,11 +329,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{chen2026archsym,
-  title   = {ArchSym: Detecting 3D-Grounded Architectural Symmetries in the Wild},
-  author  = {Hanyu Chen and Ruojin Cai and Steve Marschner and Noah Snavely},
-  journal = {arXiv preprint arXiv:2604.22202},
-  year    = {2026}
+    <pre><code>@inproceedings{chen2026archsym,
+  title     = {ArchSym: Detecting 3D-Grounded Architectural Symmetries in the Wild},
+  author    = {Chen, Hanyu and Cai, Ruojin and Marschner, Steve and Snavely, Noah},
+  booktitle = {CVPR},
+  year      = {2026}
 }</code></pre>
   </div>
 </section>
