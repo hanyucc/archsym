@@ -59,6 +59,36 @@
       "display_name": "Town Hall Tower in Kraków",
       "pointcloud": "static/data/scenes/town-hall-tower-in-krak-w/pointcloud.ply",
       "plane_dir": "static/data/scenes/town-hall-tower-in-krak-w/planes"
+    },
+    "pantheon-rome": {
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "display_name": "Pantheon (Rome)",
+      "pointcloud": "static/data/scenes/pantheon-rome/pointcloud.ply",
+      "plane_dir": "static/data/scenes/pantheon-rome/planes"
+    },
+    "isa-khan-niyazi-s-tomb": {
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "display_name": "Isa Khan Niyazi's tomb",
+      "pointcloud": "static/data/scenes/isa-khan-niyazi-s-tomb/pointcloud.ply",
+      "plane_dir": "static/data/scenes/isa-khan-niyazi-s-tomb/planes"
+    },
+    "gateway-of-india": {
+      "variants": [
+        "direct",
+        "ours",
+        "reflect3d"
+      ],
+      "display_name": "Gateway of India",
+      "pointcloud": "static/data/scenes/gateway-of-india/pointcloud.ply",
+      "plane_dir": "static/data/scenes/gateway-of-india/planes"
     }
   }
 }
